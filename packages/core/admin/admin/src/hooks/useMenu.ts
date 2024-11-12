@@ -25,26 +25,27 @@ const useMenu = (shouldUpdateStrapi: boolean) => {
   const permissions = useTypedSelector((state) => state.admin_app.permissions);
   const [menuWithUserPermissions, setMenuWithUserPermissions] = React.useState<Menu>({
     generalSectionLinks: [
-      {
-        icon: House,
-        intlLabel: {
-          id: 'global.home',
-          defaultMessage: 'Home',
-        },
-        to: '/',
-        permissions: [],
-        position: 0,
-      },
-      {
-        icon: ShoppingCart,
-        intlLabel: {
-          id: 'global.marketplace',
-          defaultMessage: 'Marketplace',
-        },
-        to: '/marketplace',
-        permissions: permissions.marketplace?.main ?? [],
-        position: 7,
-      },
+      /* Hide unnecessary menu items */
+      // {
+      //   icon: House,
+      //   intlLabel: {
+      //     id: 'global.home',
+      //     defaultMessage: 'Home',
+      //   },
+      //   to: '/',
+      //   permissions: [],
+      //   position: 0,
+      // },
+      // {
+      //   icon: ShoppingCart,
+      //   intlLabel: {
+      //     id: 'global.marketplace',
+      //     defaultMessage: 'Marketplace',
+      //   },
+      //   to: '/marketplace',
+      //   permissions: permissions.marketplace?.main ?? [],
+      //   position: 7,
+      // },
       {
         icon: Cog,
         intlLabel: {

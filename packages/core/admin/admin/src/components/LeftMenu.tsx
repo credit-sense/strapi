@@ -1,20 +1,20 @@
 import * as React from 'react';
 
-import { Divider, Flex, FlexComponent, useCollator } from '@strapi/design-system';
+import { Flex, FlexComponent, useCollator } from '@strapi/design-system';
 import { Lightning } from '@strapi/icons';
 import { useIntl } from 'react-intl';
 import { useLocation } from 'react-router-dom';
 import { styled } from 'styled-components';
 
-import { useAuth } from '../features/Auth';
+// import { useAuth } from '../features/Auth';
 import { useTracking } from '../features/Tracking';
 import { Menu, MenuItem } from '../hooks/useMenu';
-import { getDisplayName } from '../utils/users';
+// import { getDisplayName } from '../utils/users';
 
 import { MainNav } from './MainNav/MainNav';
-import { NavBrand } from './MainNav/NavBrand';
+// import { NavBrand } from './MainNav/NavBrand';
 import { NavLink } from './MainNav/NavLink';
-import { NavUser } from './MainNav/NavUser';
+// import { NavUser } from './MainNav/NavUser';
 
 const sortLinks = (links: MenuItem[]) => {
   return links.sort((a, b) => {
@@ -47,20 +47,20 @@ const NavListWrapper = styled<FlexComponent<'ul'>>(Flex)`
 interface LeftMenuProps extends Pick<Menu, 'generalSectionLinks' | 'pluginsSectionLinks'> {}
 
 const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) => {
-  const user = useAuth('AuthenticatedApp', (state) => state.user);
+  // const user = useAuth('AuthenticatedApp', (state) => state.user);
   const { trackUsage } = useTracking();
   const { pathname } = useLocation();
-  const userDisplayName = getDisplayName(user);
+  // const userDisplayName = getDisplayName(user);
   const { formatMessage, locale } = useIntl();
   const formatter = useCollator(locale, {
     sensitivity: 'base',
   });
 
-  const initials = userDisplayName
-    .split(' ')
-    .map((name) => name.substring(0, 1))
-    .join('')
-    .substring(0, 2);
+  // const initials = userDisplayName
+  //   .split(' ')
+  //   .map((name) => name.substring(0, 1))
+  //   .join('')
+  //   .substring(0, 2);
 
   const handleClickOnLink = (destination: string) => {
     trackUsage('willNavigate', { from: pathname, to: destination });
@@ -73,9 +73,9 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
 
   return (
     <MainNav>
-      <NavBrand />
+      {/* <NavBrand /> */}
 
-      <Divider />
+      {/* <Divider /> */}
 
       <NavListWrapper tag="ul" gap={3} direction="column" flex={1} paddingTop={3} paddingBottom={3}>
         {listLinks.length > 0
@@ -128,7 +128,7 @@ const LeftMenu = ({ generalSectionLinks, pluginsSectionLinks }: LeftMenuProps) =
             })
           : null}
       </NavListWrapper>
-      <NavUser initials={initials}>{userDisplayName}</NavUser>
+      {/* <NavUser initials={initials}>{userDisplayName}</NavUser> */}
     </MainNav>
   );
 };

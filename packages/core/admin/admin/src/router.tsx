@@ -1,6 +1,6 @@
 /* eslint-disable check-file/filename-naming-convention */
 
-import { RouteObject } from 'react-router-dom';
+import { Navigate, RouteObject } from 'react-router-dom';
 
 import { getEERoutes as getBaseEERoutes } from '../../ee/admin/src/constants';
 import { getEERoutes as getSettingsEERoutes } from '../../ee/admin/src/pages/SettingsPage/constants';
@@ -34,10 +34,8 @@ const getInitialRoutes = (): RouteObject[] => [
   {
     index: true,
     lazy: async () => {
-      const { HomePage } = await import('./pages/HomePage');
-
       return {
-        Component: HomePage,
+        Component: () => <Navigate to="/content-manager" />,
       };
     },
   },
