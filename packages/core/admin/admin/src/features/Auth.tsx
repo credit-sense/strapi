@@ -122,17 +122,18 @@ const AuthProvider = ({
    */
   React.useEffect(() => {
     if (token && !_disableRenewToken) {
-      renewTokenMutation({ token }).then((res) => {
-        if ('data' in res) {
-          dispatch(
-            loginAction({
-              token: res.data.token,
-            })
-          );
-        } else {
-          clearStateAndLogout();
-        }
-      });
+      // renewTokenMutation({ token }).then((res) => {
+      //   if ('data' in res) {
+      //     dispatch(
+      //       loginAction({
+      //         token: res.data.token,
+      //       })
+      //     );
+      //   } else {
+      //     clearStateAndLogout();
+      //   }
+      // });
+      window.parent.postMessage({ renewToken: true }, '*');
     }
   }, [token, dispatch, renewTokenMutation, clearStateAndLogout, _disableRenewToken]);
 
